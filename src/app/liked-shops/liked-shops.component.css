@@ -5,6 +5,5 @@
   flex-wrap: wrap;
   width: 85%;
   height: 100vh;
-  margin: 0 auto;
-  margin-top: 60px;
+  margin: 60px auto 0;
 }

@@ -10,6 +10,7 @@ import { IndexComponent } from './index/index.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
 import {CookieService} from 'ngx-cookie-service';
+import { LikedShopsComponent } from './liked-shops/liked-shops.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {CookieService} from 'ngx-cookie-service';
     RegisterComponent,
     ShopsComponent,
     IndexComponent,
-    NavbarComponent
+    NavbarComponent,
+    LikedShopsComponent
   ],
   imports: [
     BrowserModule,
