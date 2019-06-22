@@ -4,15 +4,11 @@
       <div class="card" style="width: 20rem;margin: 10px;">
         <img class="card-img-top" src="../../assets/img/bg.jpg" height="180px" width="286px" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{shop.ShopName}}</h5>
+          <h5 class="card-title">{{shop.ShopsName}}</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Distance: ~{{shop.Distance}} km</li>
-        </ul>
-        <div class="card-body" style="display: flex;justify-content: space-around">
-          <a href="#" class="btn btn-success">Like</a>
-          <a href="#" class="btn btn-danger">Dislike</a>
+        <div class="card-body" style="display: flex; color:white; justify-content: space-around">
+          <a class="btn btn-danger" (click)="RemoveFromFavoriteList(shop)">Remove from favorite list</a>
         </div>
       </div>
 

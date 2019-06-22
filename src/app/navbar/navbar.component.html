@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   <a class="navbar-brand" href="">NearShops</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,11 +12,10 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/likedshops">Liked Shops</a>
       </li>
-
-
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-light my-2 my-sm-0" (click)="logout()">Logout</button>
+      <a class="nav-link" style="color: #ffffff;" *ngIf="cookieService.check('username')">Welcome back {{cookieService.get('username')}}</a>
+      <button class="btn btn-outline-light my-2 my-sm-0" (click)="logout()" [disabled]="!cookieService.check('token')">Logout</button>
     </form>
   </div>
 </nav>

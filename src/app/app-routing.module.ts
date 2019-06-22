@@ -8,7 +8,7 @@ import {LikedShopsComponent} from './liked-shops/liked-shops.component';
 const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'shops', component: ShopsComponent, canActivate: [AuthGuard]},
-  {path: 'likedshops', component: LikedShopsComponent, canActivate: [AuthGuard]},
+  {path: 'likedshops', component: LikedShopsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

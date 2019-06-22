@@ -8,9 +8,12 @@ import { RegisterComponent } from './register/register.component';
 import { ShopsComponent } from './shops/shops.component';
 import { IndexComponent } from './index/index.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {FormsModule} from '@angular/forms';
-import {CookieService} from 'ngx-cookie-service';
+import { FormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 import { LikedShopsComponent } from './liked-shops/liked-shops.component';
+import {HttpClientModule} from '@angular/common/http';
+import {UserService} from './user.service';
+
 
 @NgModule({
   declarations: [
@@ -25,9 +28,10 @@ import { LikedShopsComponent } from './liked-shops/liked-shops.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService, UserService, ShopsComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

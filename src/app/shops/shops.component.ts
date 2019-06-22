@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LIKEDSHOPS, Shop, SHOPS} from '../shop';
+import {Shop} from '../shop';
+import {UserService} from '../user.service';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-shops',
@@ -7,19 +9,38 @@ import {LIKEDSHOPS, Shop, SHOPS} from '../shop';
   styleUrls: ['./shops.component.css']
 })
 export class ShopsComponent implements OnInit {
-  Shops: Shop[] = SHOPS;
-  LikedShops: Shop[] = LIKEDSHOPS;
-  constructor() { }
+
+  Shops: Shop[] = null;
+  LikedShops: Shop[];
+
+  constructor(private userService: UserService, private cookieService: CookieService) { }
 
   ngOnInit() {
+
+    this.userService.getLikedShops().subscribe(data => {
+      this.LikedShops = data ;
+      if (!this.cookieService.check('likedShops')) {
+        this.cookieService.set('likedShops', JSON.stringify(this.LikedShops));
+      } else {
+        this.LikedShops = JSON.parse(this.cookieService.get('likedShops'));
+      }
+    });
+
+    this.userService.getShops().subscribe(data => {
+      this.Shops = data ;
+      if (!this.cookieService.check('Shops')) {
+        this.cookieService.set('Shops', JSON.stringify(this.Shops));
+      } else {
+        this.Shops = JSON.parse(this.cookieService.get('Shops'));
+      }
+    });
   }
   checkIfInLikedList(shop: Shop) {
-    if (this.LikedShops.find(x => x.ShopId === shop.ShopId)) {
-      return true ;
-    } else { return false; }
+    return JSON.stringify(this.LikedShops).includes(JSON.stringify(shop));
   }
-  LikeShop(shop: Shop){
-    LIKEDSHOPS.push(shop);
+  AddToFavoriteList(shop: Shop) {
+    this.LikedShops.push(shop);
+    this.cookieService.set('likedShops', JSON.stringify(this.LikedShops));
   }
 
 }
