@@ -11,7 +11,6 @@ import {UserService} from '../user.service';
 export class NavbarComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private route: Router, private userService: UserService) { }
-  username = this.cookieService.get('username');
   ngOnInit() {
   }
   logout() {
