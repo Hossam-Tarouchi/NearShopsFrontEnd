@@ -28,6 +28,16 @@ export class UserService {
     }, {headers});
   }
 
+
+  register(usrname: string, passwrd: string): Observable<any> {
+    const headers = new HttpHeaders();
+    headers.append('content-type', 'application/x-www-form-urlencoded');
+    return this.Http.post<any>('http://127.0.0.1:8000/user/registers', {
+      username: usrname,
+      password: passwrd
+    }, {headers});
+  }
+
   Logout(): Observable<string> {
     const headers = new HttpHeaders({Authorization: 'Bearer ' + this.cookies.get('token')});
     return this.Http.post<string>('http://127.0.0.1:8000/api/logout', {
